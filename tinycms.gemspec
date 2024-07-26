@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "dry-configurable", "~> 1.2"
   spec.add_dependency "faraday", "~> 2.10"
+  spec.add_dependency "retriable", "~> 3.1"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

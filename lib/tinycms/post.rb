@@ -8,5 +8,7 @@ module Tinycms
       @author = author
       @content = content
     end
+
+    attr_reader :id, :title, :author, :content
   end
 end

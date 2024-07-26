@@ -10,6 +10,7 @@ require_relative "tinycms/client"
 require_relative "tinycms/blogs/api"
 require_relative "tinycms/blogs/mapper"
 require_relative "tinycms/authors/mapper"
+require_relative "tinycms/posts/api"
 require_relative "tinycms/posts/mapper"
 
 module Tinycms

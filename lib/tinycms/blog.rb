@@ -8,5 +8,7 @@ module Tinycms
       @description = description
       @posts = posts
     end
+
+    attr_reader :id, :name, :description, :posts
   end
 end
