@@ -10,6 +10,11 @@ module Tinycms
           Tinycms::Blogs::Mapper.map(blog_response)
         end
       end
+
+      def get(blog_id)
+        response = client.get("/api/blogs/#{blog_id}")
+        Tinycms::Blogs::Mapper.map(response.body)
+      end
     end
   end
 end
