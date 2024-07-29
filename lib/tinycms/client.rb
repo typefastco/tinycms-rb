@@ -4,7 +4,7 @@ require "faraday"
 
 module Tinycms
   class Client
-    BASE_URL = "http://localhost:3000"
+    BASE_URL = "https://www.tinycms.app"
 
     def initialize(api_key)
       @api_key = api_key
