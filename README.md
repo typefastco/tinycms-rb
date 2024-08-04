@@ -29,19 +29,99 @@ The gem is simple, meant to pull down blogs and posts.
 # get all blogs
 Tinycms::Blogs::Api.get_all
 
-# get blog via blog_id
-Tinycms::Blogs.api.get(<blog_id>)
+# get blog via blog_id or slug
+Tinycms::Blogs::Api.get(<blog_id>)
+# or
+Tinycms::Blogs::Api.api.get(<slug>)
 ```
 
 The blogs api will return instance(s) of blog(s) with a list of posts. You can use the post ids that you get in this endpoint to make requests to the posts endpoint.
 
 ### Posts
 ```ruby
-# get post via post_id
-Tinycms::Posts.get(<post_id>)
+# get post via post_id or slug
+Tinycms::Posts::Api.get(<post_id>)
+Tinycms::Posts::Api.get(<slug>)
 ```
 
 The posts api will return an instance of a post with the author information.
+
+### Rendering Blogs and Posts
+
+Add to your routes file `config/routes.rb` the following routes. Customize the routes to your needs/preferences.
+
+```ruby
+Rails.application.routes.draw do
+  get "blogs", to: "blogs#index"
+  get "blogs/:id", to: "blogs#show"
+
+  get "posts/:id", to: "posts#show"
+
+  # OR...
+  resources :blogs, only: [:index, :show]
+  resources :posts, only: :show
+end
+```
+
+Rendering blogs and posts
+
+```ruby
+class BlogsController < ApplicationController
+  def index
+    @blogs = Tinycms::Blogs::Api.get_all
+  end
+
+  def show
+    @blog = Tinycms::Blogs::Api.get(params[:id])
+  end
+end
+```
+
+```html
+# index.html.erb
+# link via via blog id
+<ul>
+  <% @blogs.each do |blog| %>
+    <li><%= link_to blog.name, blog_path(id: blog.id) %></li>
+  <% end %>
+</ul>
+
+# link via via blog slug
+<ul>
+  <% @blogs.each do |blog| %>
+    <li><%= link_to blog.name, blog_path(id: blog.slug) %></li>
+  <% end %>
+</ul>
+
+# show.html.erb
+# link via post id
+<ul>
+  <% @blog.posts.each do |post| %>
+    <li><%= link_to post.title, post_path(id: post.id) %></li>
+  <% end %>
+</ul>
+
+# link via post slug
+<ul>
+  <% @blog.posts.each do |post| %>
+    <li><%= link_to post.title, post_path(id: post.slug) %></li>
+  <% end %>
+</ul>
+```
+
+Rendering a post
+
+```ruby
+class PostsController < ApplicationController
+  def show
+    @post = Tinycms::Posts::Api.get(params[:id])
+  end
+end
+```
+
+```html
+<%= @post.content.html_safe %>
+```
 
 ## Development
 
