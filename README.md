@@ -30,7 +30,7 @@ The gem is simple, meant to pull down blogs and posts.
 Tinycms::Blogs::Api.get_all
 
 # get blog via blog_id
-Tinycms::Blogs.api.get(blog_id)
+Tinycms::Blogs.api.get(<blog_id>)
 ```
 
 The blogs api will return instance(s) of blog(s) with a list of posts. You can use the post ids that you get in this endpoint to make requests to the posts endpoint.
@@ -38,7 +38,7 @@ The blogs api will return instance(s) of blog(s) with a list of posts. You can u
 ### Posts
 ```ruby
 # get post via post_id
-Tinycms::Posts.get(post_id)
+Tinycms::Posts.get(<post_id>)
 ```
 
 The posts api will return an instance of a post with the author information.
