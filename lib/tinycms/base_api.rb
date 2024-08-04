@@ -2,16 +2,8 @@
 
 module Tinycms
   class BaseApi
-    def initialize(api_key)
-      @api_key = api_key
-    end
-
-    protected
-
-    attr_reader :api_key
-
     def client
-      @client ||= Tinycms::Client.new(api_key).client
+      @client ||= Tinycms::Client.new.client
     end
   end
 end
