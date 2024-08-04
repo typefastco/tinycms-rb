@@ -1,24 +1,47 @@
 # Tinycms
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tinycms`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem is used to integrate your Rails app with the Tinycms headless CMS. Add the gem to your Rails app, set the api_key in the initializer, and you're ready to go.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+This gem is meant to be used with Rails apps.
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle add tinycms
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Create an initializer in `config/initializers/tinycms.rb`. And configure the initializer as:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+```ruby
+Tinycms.configure do |config|
+  config.api_key = `YOUR-API-KEY`
+end
+```
+
+To get the api key, sign up for [TinyCMS](https://www.tinycms.app) and grab the api key in the settings page.
 
 ## Usage
 
-TODO: Write usage instructions here
+The gem is simple, meant to pull down blogs and posts.
+
+### Blogs
+```ruby
+# get all blogs
+Tinycms::Blogs::Api.get_all
+
+# get blog via blog_id
+Tinycms::Blogs.api.get(blog_id)
+```
+
+The blogs api will return instance(s) of blog(s) with a list of posts. You can use the post ids that you get in this endpoint to make requests to the posts endpoint.
+
+### Posts
+```ruby
+# get post via post_id
+Tinycms::Posts.get(post_id)
+```
+
+The posts api will return an instance of a post with the author information.
 
 ## Development
 
@@ -28,7 +51,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tinycms. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/tinycms/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/typefastco/tinycms. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/typefastco/tinycms/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
