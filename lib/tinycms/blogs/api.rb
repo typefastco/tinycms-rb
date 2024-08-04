@@ -5,7 +5,7 @@ require "retriable"
 module Tinycms
   module Blogs
     class Api < BaseApi
-      def get_all
+      def self.get_all
         Retriable.retriable do
           response = client.get("/api/blogs")
           blogs = response.body
@@ -15,7 +15,7 @@ module Tinycms
         end
       end
 
-      def get(blog_id)
+      def self.get(blog_id)
         Retriable.retriable do
           response = client.get("/api/blogs/#{blog_id}")
           Tinycms::Blogs::Mapper.map(response.body)

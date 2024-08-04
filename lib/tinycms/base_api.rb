@@ -2,8 +2,8 @@
 
 module Tinycms
   class BaseApi
-    def client
-      @client ||= Tinycms::Client.new.client
+    def self.client
+      Tinycms::Client.new.client
     end
   end
 end
