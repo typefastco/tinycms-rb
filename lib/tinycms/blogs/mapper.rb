@@ -11,7 +11,9 @@ module Tinycms
           id: response_body["id"],
           name: response_body["name"],
           description: response_body["description"],
-          posts: posts
+          posts: posts,
+          created_at: response_body["created_at"],
+          updated_at: response_body["updated_at"]
         )
       end
     end

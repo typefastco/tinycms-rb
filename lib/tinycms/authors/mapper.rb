@@ -8,7 +8,9 @@ module Tinycms
           id: response_body["id"],
           email: response_body["email"],
           first_name: response_body["first_name"],
-          last_name: response_body["last_name"]
+          last_name: response_body["last_name"],
+          created_at: response_body["created_at"],
+          updated_at: response_body["updated_at"]
         )
       end
     end

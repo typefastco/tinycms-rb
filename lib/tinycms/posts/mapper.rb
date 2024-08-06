@@ -8,7 +8,9 @@ module Tinycms
           id: response_body["id"],
           title: response_body["title"],
           author: ::Tinycms::Authors::Mapper.map(response_body["author"]),
-          content: response_body["content"]
+          content: response_body["content"],
+          created_at: response_body["created_at"],
+          updated_at: response_body["updated_at"]
         )
       end
     end
