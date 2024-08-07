@@ -13,6 +13,6 @@ module Tinycms
       @updated_at = updated_at
     end
 
-    attr_reader :id, :email, :first_name, :last_name, :full_name, :created_at, :updated_at
+    attr_reader :id, :email, :first_name, :last_name, :full_name, :avatar_url, :created_at, :updated_at
   end
 end
