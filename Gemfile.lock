@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tinycms (0.1.9)
+    tinycms (0.1.10)
       dry-configurable (~> 1.2)
       faraday (~> 2.10)
       retriable (~> 3.1)
