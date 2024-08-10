@@ -10,6 +10,7 @@ module Tinycms
           author: ::Tinycms::Authors::Mapper.map(response_body["author"]),
           content: response_body["content"],
           content_plain_text: response_body["content_plain_text"],
+          slug: response_body["slug"],
           created_at: Time.zone.parse(response_body["created_at"]),
           updated_at: Time.zone.parse(response_body["updated_at"])
         )
